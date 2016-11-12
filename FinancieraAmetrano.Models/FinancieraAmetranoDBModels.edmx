@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDFinancieraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="clientesID" />
+          </Key>
+          <Property Name="clientesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personasID" Type="int" />
+          <Property Name="codTipoCli" Type="int" />
+          <Property Name="fechaIngreso" Type="date" />
+          <Property Name="sucursalesID" Type="int" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="cuentasID" />
+          </Key>
+          <Property Name="cuentasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientesID" Type="int" />
+          <Property Name="productosID" Type="int" />
+          <Property Name="monedasID" Type="int" />
+          <Property Name="saldo" Type="float" />
+          <Property Name="fechaApertura" Type="date" />
+          <Property Name="sucursalesID" Type="int" />
+        </EntityType>
+        <EntityType Name="Monedas">
+          <Key>
+            <PropertyRef Name="monedasID" />
+          </Key>
+          <Property Name="monedasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcionMoneda" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="personasID" />
+          </Key>
+          <Property Name="personasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" />
+          <Property Name="apellido" Type="varchar" MaxLength="25" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="documento" Type="varchar" MaxLength="15" />
+          <Property Name="ciudad" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="productosID" />
+          </Key>
+          <Property Name="productosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sucursales">
+          <Key>
+            <PropertyRef Name="sucursalesID" />
+          </Key>
+          <Property Name="sucursalesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" />
+          <Property Name="departamento" Type="varchar" MaxLength="25" />
+          <Property Name="ciudad" Type="varchar" MaxLength="25" />
+          <Property Name="direccion" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <Association Name="FK__Clientes__person__3E52440B">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="personasID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="personasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clientes__sucurs__3F466844">
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursales">
+              <PropertyRef Name="sucursalesID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="sucursalesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__cliente__4222D4EF">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="clientesID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="clientesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__monedas__440B1D61">
+          <End Role="Monedas" Type="Self.Monedas" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Monedas">
+              <PropertyRef Name="monedasID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="monedasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__product__4316F928">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="productosID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="productosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__sucursa__44FF419A">
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursales">
+              <PropertyRef Name="sucursalesID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="sucursalesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDFinancieraModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monedas" EntityType="Self.Monedas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursales" EntityType="Self.Sucursales" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Clientes__person__3E52440B" Association="Self.FK__Clientes__person__3E52440B">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clientes__sucurs__3F466844" Association="Self.FK__Clientes__sucurs__3F466844">
+            <End Role="Sucursales" EntitySet="Sucursales" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__cliente__4222D4EF" Association="Self.FK__Cuentas__cliente__4222D4EF">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__monedas__440B1D61" Association="Self.FK__Cuentas__monedas__440B1D61">
+            <End Role="Monedas" EntitySet="Monedas" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__product__4316F928" Association="Self.FK__Cuentas__product__4316F928">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__sucursa__44FF419A" Association="Self.FK__Cuentas__sucursa__44FF419A">
+            <End Role="Sucursales" EntitySet="Sucursales" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDFinancieraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="clientesID" />
+          </Key>
+          <Property Name="clientesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personasID" Type="Int32" />
+          <Property Name="codTipoCli" Type="Int32" />
+          <Property Name="fechaIngreso" Type="DateTime" Precision="0" />
+          <Property Name="sucursalesID" Type="Int32" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__Clientes__person__3E52440B" FromRole="Clientes" ToRole="Personas" />
+          <NavigationProperty Name="Sucursales" Relationship="Self.FK__Clientes__sucurs__3F466844" FromRole="Clientes" ToRole="Sucursales" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__Cuentas__cliente__4222D4EF" FromRole="Clientes" ToRole="Cuentas" />
+        </EntityType>
+        <EntityType Name="Cuentas">
+          <Key>
+            <PropertyRef Name="cuentasID" />
+          </Key>
+          <Property Name="cuentasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientesID" Type="Int32" />
+          <Property Name="productosID" Type="Int32" />
+          <Property Name="monedasID" Type="Int32" />
+          <Property Name="saldo" Type="Double" />
+          <Property Name="fechaApertura" Type="DateTime" Precision="0" />
+          <Property Name="sucursalesID" Type="Int32" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Cuentas__cliente__4222D4EF" FromRole="Cuentas" ToRole="Clientes" />
+          <NavigationProperty Name="Monedas" Relationship="Self.FK__Cuentas__monedas__440B1D61" FromRole="Cuentas" ToRole="Monedas" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Cuentas__product__4316F928" FromRole="Cuentas" ToRole="Productos" />
+          <NavigationProperty Name="Sucursales" Relationship="Self.FK__Cuentas__sucursa__44FF419A" FromRole="Cuentas" ToRole="Sucursales" />
+        </EntityType>
+        <EntityType Name="Monedas">
+          <Key>
+            <PropertyRef Name="monedasID" />
+          </Key>
+          <Property Name="monedasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcionMoneda" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__Cuentas__monedas__440B1D61" FromRole="Monedas" ToRole="Cuentas" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="personasID" />
+          </Key>
+          <Property Name="personasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="documento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Clientes__person__3E52440B" FromRole="Personas" ToRole="Clientes" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="productosID" />
+          </Key>
+          <Property Name="productosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__Cuentas__product__4316F928" FromRole="Productos" ToRole="Cuentas" />
+        </EntityType>
+        <EntityType Name="Sucursales">
+          <Key>
+            <PropertyRef Name="sucursalesID" />
+          </Key>
+          <Property Name="sucursalesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="departamento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Clientes__sucurs__3F466844" FromRole="Sucursales" ToRole="Clientes" />
+          <NavigationProperty Name="Cuentas" Relationship="Self.FK__Cuentas__sucursa__44FF419A" FromRole="Sucursales" ToRole="Cuentas" />
+        </EntityType>
+        <Association Name="FK__Clientes__person__3E52440B">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="personasID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="personasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clientes__sucurs__3F466844">
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursales">
+              <PropertyRef Name="sucursalesID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="sucursalesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__cliente__4222D4EF">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="clientesID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="clientesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__monedas__440B1D61">
+          <End Role="Monedas" Type="Self.Monedas" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Monedas">
+              <PropertyRef Name="monedasID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="monedasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__product__4316F928">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="productosID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="productosID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cuentas__sucursa__44FF419A">
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="0..1" />
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursales">
+              <PropertyRef Name="sucursalesID" />
+            </Principal>
+            <Dependent Role="Cuentas">
+              <PropertyRef Name="sucursalesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDFinancieraEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
+          <EntitySet Name="Monedas" EntityType="Self.Monedas" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Sucursales" EntityType="Self.Sucursales" />
+          <AssociationSet Name="FK__Clientes__person__3E52440B" Association="Self.FK__Clientes__person__3E52440B">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clientes__sucurs__3F466844" Association="Self.FK__Clientes__sucurs__3F466844">
+            <End Role="Sucursales" EntitySet="Sucursales" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__cliente__4222D4EF" Association="Self.FK__Cuentas__cliente__4222D4EF">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__monedas__440B1D61" Association="Self.FK__Cuentas__monedas__440B1D61">
+            <End Role="Monedas" EntitySet="Monedas" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__product__4316F928" Association="Self.FK__Cuentas__product__4316F928">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cuentas__sucursa__44FF419A" Association="Self.FK__Cuentas__sucursa__44FF419A">
+            <End Role="Sucursales" EntitySet="Sucursales" />
+            <End Role="Cuentas" EntitySet="Cuentas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDFinancieraModelStoreContainer" CdmEntityContainer="BDFinancieraEntities">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="BDFinancieraModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="clientesID" ColumnName="clientesID" />
+                <ScalarProperty Name="personasID" ColumnName="personasID" />
+                <ScalarProperty Name="codTipoCli" ColumnName="codTipoCli" />
+                <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+                <ScalarProperty Name="sucursalesID" ColumnName="sucursalesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuentas">
+            <EntityTypeMapping TypeName="BDFinancieraModel.Cuentas">
+              <MappingFragment StoreEntitySet="Cuentas">
+                <ScalarProperty Name="cuentasID" ColumnName="cuentasID" />
+                <ScalarProperty Name="clientesID" ColumnName="clientesID" />
+                <ScalarProperty Name="productosID" ColumnName="productosID" />
+                <ScalarProperty Name="monedasID" ColumnName="monedasID" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="fechaApertura" ColumnName="fechaApertura" />
+                <ScalarProperty Name="sucursalesID" ColumnName="sucursalesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monedas">
+            <EntityTypeMapping TypeName="BDFinancieraModel.Monedas">
+              <MappingFragment StoreEntitySet="Monedas">
+                <ScalarProperty Name="monedasID" ColumnName="monedasID" />
+                <ScalarProperty Name="descripcionMoneda" ColumnName="descripcionMoneda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="BDFinancieraModel.Personas">
+              <MappingFragment StoreEntitySet="Personas">
+                <ScalarProperty Name="personasID" ColumnName="personasID" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="documento" ColumnName="documento" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="BDFinancieraModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="productosID" ColumnName="productosID" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursales">
+            <EntityTypeMapping TypeName="BDFinancieraModel.Sucursales">
+              <MappingFragment StoreEntitySet="Sucursales">
+                <ScalarProperty Name="sucursalesID" ColumnName="sucursalesID" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

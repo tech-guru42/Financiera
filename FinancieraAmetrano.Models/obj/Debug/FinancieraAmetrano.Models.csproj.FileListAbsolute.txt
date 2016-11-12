@@ -1,0 +1,10 @@
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Debug\FinancieraAmetrano.Models.dll.config
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Debug\FinancieraAmetrano.Models.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Debug\FinancieraAmetrano.Models.pdb
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Debug\EntityFramework.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Debug\EntityFramework.xml
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\obj\Debug\FinancieraAmetrano.Models.csprojResolveAssemblyReference.cache
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\obj\Debug\FinancieraAmetrano.Models.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\obj\Debug\FinancieraAmetrano.Models.pdb

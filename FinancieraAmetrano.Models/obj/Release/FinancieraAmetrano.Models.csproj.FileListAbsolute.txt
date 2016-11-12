@@ -1,0 +1,9 @@
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Release\FinancieraAmetrano.Models.dll.config
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Release\FinancieraAmetrano.Models.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Release\FinancieraAmetrano.Models.pdb
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Release\EntityFramework.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Release\EntityFramework.SqlServer.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Release\EntityFramework.xml
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\bin\Release\EntityFramework.SqlServer.xml
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\obj\Release\FinancieraAmetrano.Models.dll
+c:\users\mathi\documents\visual studio 2015\Projects\FinancieraAmetrano\FinancieraAmetrano.Models\obj\Release\FinancieraAmetrano.Models.pdb

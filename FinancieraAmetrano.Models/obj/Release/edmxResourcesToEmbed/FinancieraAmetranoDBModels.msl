@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDFinancieraModelStoreContainer" CdmEntityContainer="BDFinancieraEntities">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="BDFinancieraModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="clientesID" ColumnName="clientesID" />
+          <ScalarProperty Name="personasID" ColumnName="personasID" />
+          <ScalarProperty Name="codTipoCli" ColumnName="codTipoCli" />
+          <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+          <ScalarProperty Name="sucursalesID" ColumnName="sucursalesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cuentas">
+      <EntityTypeMapping TypeName="BDFinancieraModel.Cuentas">
+        <MappingFragment StoreEntitySet="Cuentas">
+          <ScalarProperty Name="cuentasID" ColumnName="cuentasID" />
+          <ScalarProperty Name="clientesID" ColumnName="clientesID" />
+          <ScalarProperty Name="productosID" ColumnName="productosID" />
+          <ScalarProperty Name="monedasID" ColumnName="monedasID" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+          <ScalarProperty Name="fechaApertura" ColumnName="fechaApertura" />
+          <ScalarProperty Name="sucursalesID" ColumnName="sucursalesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Monedas">
+      <EntityTypeMapping TypeName="BDFinancieraModel.Monedas">
+        <MappingFragment StoreEntitySet="Monedas">
+          <ScalarProperty Name="monedasID" ColumnName="monedasID" />
+          <ScalarProperty Name="descripcionMoneda" ColumnName="descripcionMoneda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personas">
+      <EntityTypeMapping TypeName="BDFinancieraModel.Personas">
+        <MappingFragment StoreEntitySet="Personas">
+          <ScalarProperty Name="personasID" ColumnName="personasID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="BDFinancieraModel.Productos">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="productosID" ColumnName="productosID" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursales">
+      <EntityTypeMapping TypeName="BDFinancieraModel.Sucursales">
+        <MappingFragment StoreEntitySet="Sucursales">
+          <ScalarProperty Name="sucursalesID" ColumnName="sucursalesID" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="departamento" ColumnName="departamento" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

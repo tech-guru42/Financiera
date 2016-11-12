@@ -1,0 +1,33 @@
+﻿@model IEnumerable<FinancieraAmetrano.Models.Monedas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcionMoneda)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcionMoneda)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.monedasID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.monedasID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.monedasID })
+        </td>
+    </tr>
+}
+
+</table>

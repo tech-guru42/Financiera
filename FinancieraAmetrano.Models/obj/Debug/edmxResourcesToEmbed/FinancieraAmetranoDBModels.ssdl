@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDFinancieraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="clientesID" />
+    </Key>
+    <Property Name="clientesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personasID" Type="int" />
+    <Property Name="codTipoCli" Type="int" />
+    <Property Name="fechaIngreso" Type="date" />
+    <Property Name="sucursalesID" Type="int" />
+  </EntityType>
+  <EntityType Name="Cuentas">
+    <Key>
+      <PropertyRef Name="cuentasID" />
+    </Key>
+    <Property Name="cuentasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="clientesID" Type="int" />
+    <Property Name="productosID" Type="int" />
+    <Property Name="monedasID" Type="int" />
+    <Property Name="saldo" Type="float" />
+    <Property Name="fechaApertura" Type="date" />
+    <Property Name="sucursalesID" Type="int" />
+  </EntityType>
+  <EntityType Name="Monedas">
+    <Key>
+      <PropertyRef Name="monedasID" />
+    </Key>
+    <Property Name="monedasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcionMoneda" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Personas">
+    <Key>
+      <PropertyRef Name="personasID" />
+    </Key>
+    <Property Name="personasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="25" />
+    <Property Name="apellido" Type="varchar" MaxLength="25" />
+    <Property Name="direccion" Type="varchar" MaxLength="50" />
+    <Property Name="documento" Type="varchar" MaxLength="15" />
+    <Property Name="ciudad" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="productosID" />
+    </Key>
+    <Property Name="productosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sucursales">
+    <Key>
+      <PropertyRef Name="sucursalesID" />
+    </Key>
+    <Property Name="sucursalesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="25" />
+    <Property Name="departamento" Type="varchar" MaxLength="25" />
+    <Property Name="ciudad" Type="varchar" MaxLength="25" />
+    <Property Name="direccion" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <Association Name="FK__Clientes__person__3E52440B">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="personasID" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="personasID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Clientes__sucurs__3F466844">
+    <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="0..1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursales">
+        <PropertyRef Name="sucursalesID" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="sucursalesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuentas__cliente__4222D4EF">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="clientesID" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="clientesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuentas__monedas__440B1D61">
+    <End Role="Monedas" Type="Self.Monedas" Multiplicity="0..1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Monedas">
+        <PropertyRef Name="monedasID" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="monedasID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuentas__product__4316F928">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="productosID" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="productosID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cuentas__sucursa__44FF419A">
+    <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="0..1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursales">
+        <PropertyRef Name="sucursalesID" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="sucursalesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDFinancieraModelStoreContainer">
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Monedas" EntityType="Self.Monedas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sucursales" EntityType="Self.Sucursales" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Clientes__person__3E52440B" Association="Self.FK__Clientes__person__3E52440B">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Clientes__sucurs__3F466844" Association="Self.FK__Clientes__sucurs__3F466844">
+      <End Role="Sucursales" EntitySet="Sucursales" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuentas__cliente__4222D4EF" Association="Self.FK__Cuentas__cliente__4222D4EF">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuentas__monedas__440B1D61" Association="Self.FK__Cuentas__monedas__440B1D61">
+      <End Role="Monedas" EntitySet="Monedas" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuentas__product__4316F928" Association="Self.FK__Cuentas__product__4316F928">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cuentas__sucursa__44FF419A" Association="Self.FK__Cuentas__sucursa__44FF419A">
+      <End Role="Sucursales" EntitySet="Sucursales" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

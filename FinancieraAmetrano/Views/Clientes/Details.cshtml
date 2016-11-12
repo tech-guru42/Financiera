@@ -1,0 +1,50 @@
+﻿@model FinancieraAmetrano.Models.Clientes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Clientes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codTipoCli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codTipoCli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaIngreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaIngreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Personas.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personas.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sucursales.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sucursales.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.clientesID }) |
+    @Html.ActionLink("Volver a Lista", "Index")
+</p>

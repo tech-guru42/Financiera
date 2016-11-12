@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FinancieraAmetrano.Models.Clientes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codTipoCli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Personas.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sucursales.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codTipoCli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Personas.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sucursales.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.clientesID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.clientesID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.clientesID })
+        </td>
+    </tr>
+}
+
+</table>

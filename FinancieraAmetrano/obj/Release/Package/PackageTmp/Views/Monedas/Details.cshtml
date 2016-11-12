@@ -1,0 +1,26 @@
+﻿@model FinancieraAmetrano.Models.Monedas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Monedas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcionMoneda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcionMoneda)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.monedasID }) |
+    @Html.ActionLink("Volver a Lista", "Index")
+</p>

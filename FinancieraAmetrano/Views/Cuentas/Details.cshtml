@@ -1,0 +1,66 @@
+﻿@model FinancieraAmetrano.Models.Cuentas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cuentas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.saldo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaApertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaApertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientes.clientesID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.clientesID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monedas.descripcionMoneda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monedas.descripcionMoneda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Productos.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Productos.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sucursales.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sucursales.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cuentasID }) |
+    @Html.ActionLink("Volver a Lista", "Index")
+</p>
